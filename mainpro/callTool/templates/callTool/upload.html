@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Upload File</title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<div style="justify-content: center;background-color: slategray; border: 3px;">
+		<h1 > file to up load</h1></div>
+	
+	<form action="{% url 'callTool:getfile' %}" method="post" enctype="multipart/form-data">
+		{% csrf_token %}
+		{{Uf.as_p}}
+		<input type="submit">
+	</form>
+<p>------------------------------------------------</p>
+<a href="{% url 'callTool:listfile' %}">list file</a>
+</body>
+</html>

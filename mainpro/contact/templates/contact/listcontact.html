@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>list contact</title>
+</head>
+<body>
+	<h1> list contact is below</h1>
+	<div>
+		{% for item in lc %}
+			<p><a href="{% url 'contact:detailcontact' item.id %}"> {{item.username}}</a></p>
+		{% endfor %}
+	</div>
+</body>
+</html>
