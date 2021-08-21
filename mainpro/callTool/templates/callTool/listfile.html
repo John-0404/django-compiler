@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>List File </title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<h1>list file below</h1>
+	{% for item in lf %}
+			<p style="font-size: 27px">{{item.id}}</a></p>
+			<p><a href="{% url 'callTool:detailfile' item.id %}"> {{item.title}}</a></p>
+			<div >
+			<p style="font-size: 22px"> {{item.body}}</a></p>
+				
+			</div>
+		
+			<button><a href="{{ item.file.url}}" download="{{ item.file.url}}">download</a></button>
+			
+		{% endfor %}
+</body>
+</html>

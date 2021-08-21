@@ -1,0 +1,30 @@
+<!<!doctype html>
+<html>
+<head>
+	{% load static %}
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Home</title>
+	<link rel="stylesheet" href="{% static 'loghome/style.css' %}">
+</head>
+<div style="background: pink;">
+	<h1 style="color: red; font-family: fantasy;">
+		this is home page
+	</h1>
+</div>
+	
+	<div class="menu">
+		<ul>
+			<li><a href="http://127.0.0.1:8000/admin/" title="admin">Admin</a></li>
+			<li><a href="{% url 'loghome:loghome' %}" title="Home">Home</a></li>
+			<li><a href="{% url 'loghome:post1' %}" title="Post of thien">Post</a></li>
+			<li><a href="{% url 'contact:contactp' %}" title="Blog">Contact</a></li>
+			<li><a href="{% url 'callTool:upfile' %}" title="callTool">Tool</a></li>
+			</a></li>
+			<li><a href="{% url 'seller:sellerx1' %}" title="Seller">Seller</a></li>
+			<li><a href="{% url 'compiler:getinfor' %}" title="compiler">Compiler</a></li>
+
+		</ul>
+	</div>
+	
+</body>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>
+         thien's web
+    </title>
+    <link rel="stylesheet" href="thienstyle.css">
+    <style>
+.box1{
+    width: 100%;
+    height: 50px;
+    background-color:rgba(27, 4, 4, 0.822);
+    display: flex;
+    font-size: 20px;
+    border: 0px solid black;
+    padding: 10px;
+    justify-content: center;
+    align-items:  center;
+}
+    </style>
+</head>
+<body style="margin: 0px;">
+    <div class="box1">
+        <div id="start" >
+            <button> muc luc</button>
+        </div>
+        
+        <div id="search">
+            <input type="text"> 
+        </div>
+    </div>
+    <div >
+    <h1 style="color: red;" id="title1"> ADD CONTACT FORMS   </h1>
+    </div>
+    <HR></HR>
+    <input type="radio" name="gioitinh" > 
+    <input type="radio" name="gioitinh" >
+    <form action="{% url 'contact:getContact' %}" method="post">
+        {% csrf_token %}
+        {{ cf.as_p }}
+        <input type="submit">
+    </form>
+    <a href="{% url 'contact:listcontact' %}"> xem danh sach contact</a>
+</body>
+
+</html>
