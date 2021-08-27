@@ -4,6 +4,8 @@ import os
 import subprocess
 from .models import GetModel
 from .forms import GetForms
+import textract
+from pathlib import Path
 
 # Create your views here.
 
@@ -16,11 +18,11 @@ def submitInfor(request):
 	if form.is_valid():
 		name1 = form.cleaned_data['name']
 		path1 = form.cleaned_data['path']
-		para1 = form.cleaned_data['para']
-		out1 = process(name1,path1,para1)
-		form.instance.out = out1
+		para1 = form.cleaned_data['para'] 
+		form.instance.out = process(name1,path1,para1)
+		a = process(name1,path1,para1)
 		form.save()
-		return render(request, 'export2lna/output.html',{'out1' :out1})
+		return render(request, 'export2lna/output.html', {'a' : a})
 	else:
 		return HttpResponse('false')
 
@@ -32,7 +34,13 @@ def process(name,path,para):
 	                        shell=True, 
 	                        stdout = subprocess.PIPE,
 	                        stderr = subprocess.PIPE)
-	print("-------------------------------")	
-	Rs = result.stdout.decode("utf-8")
-	return Rs
-	#return render(request, 'compiler/output.html', {'Rs' : Rs})
+	print("-------------------------------")
+	old = r'C:\\Users\\Admin\\Desktop\\lab\\learn_python\\django\\SmartContractChecking-Application\\tools\\dcr2cpn\\test.lna'
+	new = r'C:\\Users\\Admin\\Desktop\\lab\\learn_python\\django\\SmartContractChecking-Application\\tools\\dcr2cpn\\test.txt'
+	os.rename(old, new)
+	text = textract.process(r'C:\\Users\\Admin\\Desktop\\lab\\learn_python\\django\\SmartContractChecking-Application\\tools\\dcr2cpn\\test.txt')
+	text = text.decode("utf-8")
+	file = open(r"C:\Users\Admin\Desktop\filetext.lna", "w")
+	file.write( text )
+	return text
+	
